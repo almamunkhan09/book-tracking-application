@@ -15,7 +15,8 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
+import { update } from '../assets/BooksAPI';
 import { Book } from '../assets/types';
 
 type AppProps = {
@@ -23,6 +24,14 @@ type AppProps = {
 };
 
 function BookCard({ book }: AppProps) {
+  const [selectedValue, setSelectedValue] = useState<string>('');
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (event.target.value) {
+      setSelectedValue(event.target.value);
+      update(book, event.target.value);
+    }
+  };
   return (
     <Card
       direction={'row'}
@@ -33,7 +42,8 @@ function BookCard({ book }: AppProps) {
       <Image
         objectFit="cover"
         my={{ md: 'auto' }}
-        pl={2}
+        mx={1}
+        // pl={2}
         w={128}
         h={193}
         borderRadius={5}
@@ -44,7 +54,7 @@ function BookCard({ book }: AppProps) {
       <Stack>
         <CardBody>
           <Heading size="md">{book.title}</Heading> {/* Book ttle */}
-          <Heading size="xs" py={2} noOfLines={1}>
+          <Heading size="xs" py={2} noOfLines={2}>
             {book.authors.join(',')}
           </Heading>{' '}
           <Text py="2"> </Text>
@@ -53,7 +63,12 @@ function BookCard({ book }: AppProps) {
         <CardFooter>
           <Flex>
             <Spacer />
-            <Select mr={1} placeholder="Move to ...">
+            <Select
+              mr={1}
+              placeholder="Move to ..."
+              onChange={handleSelectChange}
+              // value={book.shelf}
+            >
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
               <option value="read">Read</option>

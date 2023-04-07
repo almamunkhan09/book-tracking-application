@@ -19,7 +19,7 @@ function App() {
   const [currentlyReading, setcurrentlyReading] = useState<Book[] | null>(null);
   const [wantToRead, setwantToRead] = useState<Book[] | null>(null);
   const [read, setRead] = useState<Book[] | null>(null);
-  const [none, setNone] = useState<Book[] | null>(null);
+  // const [none, setNone] = useState<Book[] | null>(null);
 
   useEffect(() => {
     getAll()
@@ -28,7 +28,7 @@ function App() {
         setcurrentlyReading(findCurrentlyReading(data));
         setwantToRead(findWantToRead(data));
         setRead(findRead(data));
-        setNone(findNone(data));
+        // setNone(findNone(data));
       })
       .catch((err) => console.log(err));
   }, []);
