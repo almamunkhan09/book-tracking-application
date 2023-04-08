@@ -75,8 +75,8 @@ function App() {
           />
         ) : (
           <div>
-            <Center bgColor={'green'}>
-              <h1>MyReads</h1>
+            <Center bgColor={'gray'}>
+              <Heading size="3xl">MyReads</Heading>
             </Center>
             <div>
               <div>
