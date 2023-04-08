@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from '@chakra-ui/icons';
-import { useStatStyles } from '@chakra-ui/react';
+import { Box, useStatStyles } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { contextApi } from '../App';
@@ -24,10 +24,10 @@ function SearchPage() {
 
   return (
     <div className="search-books">
-      <div className="search-books-bar">
+      <Box className="search-books-bar" alignItems={'center'}>
         <Link to={'/'}>
           {' '}
-          <ArrowLeftIcon />{' '}
+          <ArrowLeftIcon mx={3} />{' '}
         </Link>
         <div className="search-books-input-wrapper">
           <input
@@ -41,7 +41,7 @@ function SearchPage() {
             }}
           />
         </div>
-      </div>
+      </Box>
       <div className="search-books-results">
         {searchedBooks.length ? <CardsGrid books={searchedBooks} /> : ' '}
       </div>
