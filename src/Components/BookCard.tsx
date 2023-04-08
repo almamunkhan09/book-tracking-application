@@ -26,8 +26,16 @@ type AppProps = {
 };
 
 export default function BookCard({ book }: AppProps) {
-  const { change, setChange } = useContext(contextApi);
+  // console.log('book', book);
+  const { change, setChange, allBooks } = useContext(contextApi);
   const [transitionOpen, setTransitionOpen] = useState<boolean>(false);
+
+  const isExist: Book[] | undefined = allBooks?.filter(
+    (item) => item.id === book.id,
+  );
+  if (isExist && isExist?.length > 0) {
+    book = { ...isExist[0] };
+  }
 
   const handleSelectChange = async (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -41,6 +49,7 @@ export default function BookCard({ book }: AppProps) {
       }
     }
   };
+  if (!book) return <div> No book </div>;
   return (
     <>
       <Card
@@ -65,9 +74,13 @@ export default function BookCard({ book }: AppProps) {
             <Heading size="md" noOfLines={2}>
               {book.title}
             </Heading>{' '}
-            <Heading size="xs" py={2} noOfLines={2}>
-              {book.authors.join(',')}
-            </Heading>{' '}
+            {book.authors && book.authors.length > 0 && (
+              <Heading size="xs" py={2} noOfLines={2}>
+                {book.authors.length > 1
+                  ? book.authors.join(',')
+                  : book.authors[0]}
+              </Heading>
+            )}
           </CardBody>
 
           <CardFooter>

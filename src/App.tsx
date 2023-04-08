@@ -14,6 +14,7 @@ import BookCard from './Components/BookCard';
 import CardsGrid from './Components/CardsGrid';
 import ContinueReading from './Components/ContinueReading';
 import Read from './Components/Read';
+import SearchPage from './Components/SearchPage';
 import WantToRead from './Components/WantToRead';
 
 interface ContextState {
@@ -22,6 +23,7 @@ interface ContextState {
   currentlyReading: Book[] | null;
   wantToRead: Book[] | null;
   read: Book[] | null;
+  allBooks: Book[] | null;
 }
 
 export const contextApi = createContext<ContextState>({
@@ -30,6 +32,7 @@ export const contextApi = createContext<ContextState>({
   currentlyReading: null,
   wantToRead: null,
   read: null,
+  allBooks: null,
 });
 
 function App() {
@@ -55,29 +58,21 @@ function App() {
 
   return (
     <contextApi.Provider
-      value={{ change, setChange, currentlyReading, wantToRead, read }}
+      value={{
+        change,
+        setChange,
+        currentlyReading,
+        wantToRead,
+        read,
+        allBooks,
+      }}
     >
       <div className="app">
         {showSearchPage ? (
-          <div className="search-books">
-            <div className="search-books-bar">
-              <a
-                className="close-search"
-                onClick={() => setShowSearchpage(!showSearchPage)}
-              >
-                Close
-              </a>
-              <div className="search-books-input-wrapper">
-                <input
-                  type="text"
-                  placeholder="Search by title, author, or ISBN"
-                />
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
-          </div>
+          <SearchPage
+            showSearchPage={showSearchPage}
+            setShowSearchpage={setShowSearchpage}
+          />
         ) : (
           <div>
             <Center bgColor={'green'}>
