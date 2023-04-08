@@ -1,5 +1,7 @@
+import { ArrowLeftIcon } from '@chakra-ui/icons';
 import { useStatStyles } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { contextApi } from '../App';
 import { search } from '../assets/BooksAPI';
 import { Book } from '../assets/types';
@@ -10,7 +12,7 @@ type AppProps = {
   setShowSearchpage: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function SearchPage({ showSearchPage, setShowSearchpage }: AppProps) {
+function SearchPage() {
   const [query, setQuery] = useState('');
   const [searchedBooks, setSearchedBooks] = useState<Book[]>([]);
 
@@ -23,12 +25,10 @@ function SearchPage({ showSearchPage, setShowSearchpage }: AppProps) {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a
-          className="close-search"
-          onClick={() => setShowSearchpage(!showSearchPage)}
-        >
-          Close
-        </a>
+        <Link to={'/'}>
+          {' '}
+          <ArrowLeftIcon />{' '}
+        </Link>
         <div className="search-books-input-wrapper">
           <input
             type="text"

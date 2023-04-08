@@ -1,6 +1,7 @@
 import './App.css';
 import { Center, Heading } from '@chakra-ui/react';
 import { createContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getAll } from './assets/BooksAPI';
 import {
   findCurrentlyReading,
@@ -69,10 +70,11 @@ function App() {
     >
       <div className="app">
         {showSearchPage ? (
-          <SearchPage
-            showSearchPage={showSearchPage}
-            setShowSearchpage={setShowSearchpage}
-          />
+          // <SearchPage
+          //   showSearchPage={showSearchPage}
+          //   setShowSearchpage={setShowSearchpage}
+          // />
+          ' '
         ) : (
           <div>
             <Center bgColor={'gray'}>
@@ -86,9 +88,10 @@ function App() {
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => setShowSearchpage(!showSearchPage)}>
+              {/* <a onClick={() => setShowSearchpage(!showSearchPage)}>
                 Add a book
-              </a>
+              </a> */}
+              <Link to={'/search'}> </Link>
             </div>
           </div>
         )}
