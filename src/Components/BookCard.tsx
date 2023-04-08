@@ -25,16 +25,14 @@ type AppProps = {
   book: Book;
 };
 
-function BookCard({ book }: AppProps) {
+export default function BookCard({ book }: AppProps) {
   const { change, setChange } = useContext(contextApi);
-  const [transitionOpen, setTransitionOpen] = useState(false);
-  // const [selectedValue, setSelectedValue] = useState<string>('');
+  const [transitionOpen, setTransitionOpen] = useState<boolean>(false);
 
   const handleSelectChange = async (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     if (event.target.value) {
-      // setSelectedValue(event.target.value);
       if (event.target.value !== book.shelf) {
         setTransitionOpen(true);
         await update(book, event.target.value);
@@ -54,9 +52,7 @@ function BookCard({ book }: AppProps) {
       >
         <Image
           objectFit="cover"
-          // my={'auto'}
           mx={1}
-          // pl={2}
           w={128}
           h={193}
           borderRadius={5}
@@ -69,11 +65,9 @@ function BookCard({ book }: AppProps) {
             <Heading size="md" noOfLines={2}>
               {book.title}
             </Heading>{' '}
-            {/* Book ttle */}
             <Heading size="xs" py={2} noOfLines={2}>
               {book.authors.join(',')}
             </Heading>{' '}
-            <Text py="2"> </Text>
           </CardBody>
 
           <CardFooter>
@@ -83,7 +77,6 @@ function BookCard({ book }: AppProps) {
                 mr={1}
                 placeholder="Move to ..."
                 onChange={handleSelectChange}
-                // value={book.shelf}
               >
                 <option
                   value="currentlyReading"
@@ -112,5 +105,3 @@ function BookCard({ book }: AppProps) {
     </>
   );
 }
-
-export default BookCard;

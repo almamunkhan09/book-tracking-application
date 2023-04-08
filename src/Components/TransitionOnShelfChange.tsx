@@ -14,7 +14,7 @@ import {
 import React from 'react';
 
 export function TransitionOnShelfChange({ open }: { open: boolean }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
 
   return (
     <>

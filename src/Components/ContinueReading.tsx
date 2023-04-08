@@ -6,7 +6,6 @@ import CardsGrid from './CardsGrid';
 
 function ContinueReading() {
   const { currentlyReading } = useContext(contextApi);
-  console.log('Continu Reading', currentlyReading);
   return (
     <div className="bookshelf">
       <Center my={5}>
