@@ -16,6 +16,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { contextApi } from '../App';
 import { update } from '../assets/BooksAPI';
 import { Book } from '../assets/types';
@@ -71,6 +72,11 @@ export default function BookCard({ book }: AppProps) {
 
         <Stack>
           <CardBody>
+            {/* <Link to={`/${book.id}}`}> */}
+            <Heading size="md" noOfLines={2}>
+              {book.title}
+            </Heading>{' '}
+            {/* </Link> */}
             <Heading size="md" noOfLines={2}>
               {book.title}
             </Heading>{' '}

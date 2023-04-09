@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from '@chakra-ui/icons';
-import { Box, useStatStyles } from '@chakra-ui/react';
+import { Box, Center, useStatStyles } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { contextApi } from '../App';
@@ -15,10 +15,24 @@ type AppProps = {
 function SearchPage() {
   const [query, setQuery] = useState('');
   const [searchedBooks, setSearchedBooks] = useState<Book[]>([]);
+  const [response, setResponse] = useState<string>(
+    'Please provide a query in the search bar',
+  );
 
   const searchHandler = async () => {
-    search(query, 20)
-      .then((data) => setSearchedBooks(data))
+    // setSearchedBooks([]);
+    search(query, 1)
+      .then((data) => {
+        console.log(data);
+        !data.error && !data.books.error && setSearchedBooks(data.books);
+        !data.error && data.books.error && setSearchedBooks([]);
+        !data.error &&
+          data.books.error &&
+          setResponse('No book found as per your search');
+
+        data.error && setSearchedBooks([]);
+        data.error && setResponse('Please provide a query in the search bar');
+      })
       .catch((err) => err);
   };
 
@@ -43,7 +57,11 @@ function SearchPage() {
         </div>
       </Box>
       <div className="search-books-results">
-        {searchedBooks.length ? <CardsGrid books={searchedBooks} /> : ' '}
+        {searchedBooks.length > 0 ? (
+          <CardsGrid books={searchedBooks} />
+        ) : (
+          <Center> {response} </Center>
+        )}
       </div>
     </div>
   );
