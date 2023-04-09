@@ -1,8 +1,7 @@
 import { ArrowLeftIcon } from '@chakra-ui/icons';
-import { Box, Center, useStatStyles } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { contextApi } from '../App';
 import { search } from '../assets/BooksAPI';
 import { Book } from '../assets/types';
 import CardsGrid from './CardsGrid';
@@ -12,7 +11,7 @@ type AppProps = {
   setShowSearchpage: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function SearchPage() {
+export default function SearchPage() {
   const [query, setQuery] = useState('');
   const [searchedBooks, setSearchedBooks] = useState<Book[]>([]);
   const [response, setResponse] = useState<string>(
@@ -20,10 +19,8 @@ function SearchPage() {
   );
 
   const searchHandler = async () => {
-    // setSearchedBooks([]);
     search(query, 1)
       .then((data) => {
-        console.log(data);
         !data.error && !data.books.error && setSearchedBooks(data.books);
         !data.error && data.books.error && setSearchedBooks([]);
         !data.error &&
@@ -66,5 +63,3 @@ function SearchPage() {
     </div>
   );
 }
-
-export default SearchPage;

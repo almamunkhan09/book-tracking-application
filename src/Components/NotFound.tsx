@@ -1,8 +1,7 @@
 import { Button, Center, Container, Heading, VStack } from '@chakra-ui/react';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NotFound() {
+export default function NotFound() {
   return (
     <Container maxW="2xl" h={'100vh'} centerContent>
       <Center
@@ -25,5 +24,3 @@ function NotFound() {
     </Container>
   );
 }
-
-export default NotFound;

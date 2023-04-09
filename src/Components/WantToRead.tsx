@@ -1,9 +1,9 @@
 import { Center, Heading } from '@chakra-ui/react';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { contextApi } from '../App';
 import CardsGrid from './CardsGrid';
 
-function WantToRead() {
+export default function WantToRead() {
   const { wantToRead } = useContext(contextApi);
   return (
     <div className="bookshelf">
@@ -20,5 +20,3 @@ function WantToRead() {
     </div>
   );
 }
-
-export default WantToRead;

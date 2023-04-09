@@ -1,17 +1,10 @@
 import {
-  Button,
   Modal,
-  ModalBody,
-  ModalCloseButton,
   ModalContent,
-  ModalFooter,
-  ModalHeader,
   ModalOverlay,
   Spinner,
-  Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
 
 export function TransitionOnShelfChange({ open }: { open: boolean }) {
   const { isOpen, onClose } = useDisclosure();

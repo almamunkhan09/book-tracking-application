@@ -5,17 +5,12 @@ import { Link } from 'react-router-dom';
 import { getAll } from './assets/BooksAPI';
 import {
   findCurrentlyReading,
-  findNone,
   findRead,
   findWantToRead,
 } from './assets/functions';
-import reactLogo from './assets/react.svg';
 import { Book } from './assets/types';
-import BookCard from './Components/BookCard';
-import CardsGrid from './Components/CardsGrid';
 import ContinueReading from './Components/ContinueReading';
 import Read from './Components/Read';
-import SearchPage from './Components/SearchPage';
 import WantToRead from './Components/WantToRead';
 
 interface ContextState {
@@ -37,7 +32,6 @@ export const contextApi = createContext<ContextState>({
 });
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
   const [allBooks, setAllBooks] = useState<Book[] | null>(null);
   const [currentlyReading, setcurrentlyReading] = useState<Book[] | null>(null);
   const [wantToRead, setwantToRead] = useState<Book[] | null>(null);
@@ -52,7 +46,6 @@ function App() {
         setcurrentlyReading(findCurrentlyReading(data));
         setwantToRead(findWantToRead(data));
         setRead(findRead(data));
-        // setNone(findNone(data));
       })
       .catch((err) => console.log(err));
   }, [change]);
@@ -69,32 +62,25 @@ function App() {
       }}
     >
       <div className="app">
-        {showSearchPage ? (
-          // <SearchPage
-          //   showSearchPage={showSearchPage}
-          //   setShowSearchpage={setShowSearchpage}
-          // />
-          ' '
-        ) : (
+        <div>
+          <Center
+            bgColor={'gray'}
+            h="150px"
+            bgGradient="linear(to-r, green.200, pink.500)"
+          >
+            <Heading size="3xl">MyReads</Heading>
+          </Center>
           <div>
-            <Center bgColor={'gray'}>
-              <Heading size="3xl">MyReads</Heading>
-            </Center>
             <div>
-              <div>
-                <ContinueReading />
-                <WantToRead />
-                <Read />
-              </div>
-            </div>
-            <div className="open-search">
-              {/* <a onClick={() => setShowSearchpage(!showSearchPage)}>
-                Add a book
-              </a> */}
-              <Link to={'/search'}> </Link>
+              <ContinueReading />
+              <WantToRead />
+              <Read />
             </div>
           </div>
-        )}
+          <div className="open-search">
+            <Link to={'/search'}> </Link>
+          </div>
+        </div>
       </div>
     </contextApi.Provider>
   );

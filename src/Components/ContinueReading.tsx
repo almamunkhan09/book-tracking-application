@@ -1,10 +1,9 @@
 import { Center, Heading } from '@chakra-ui/react';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { contextApi } from '../App';
-import { Book } from '../assets/types';
 import CardsGrid from './CardsGrid';
 
-function ContinueReading() {
+export default function ContinueReading() {
   const { currentlyReading } = useContext(contextApi);
   return (
     <div className="bookshelf">
@@ -21,5 +20,3 @@ function ContinueReading() {
     </div>
   );
 }
-
-export default ContinueReading;

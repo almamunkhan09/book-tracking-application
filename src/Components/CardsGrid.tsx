@@ -1,5 +1,4 @@
-import { Grid, GridItem, SimpleGrid } from '@chakra-ui/react';
-import React from 'react';
+import { GridItem, SimpleGrid } from '@chakra-ui/react';
 import { Book } from '../assets/types';
 import BookCard from './BookCard';
 
@@ -7,7 +6,7 @@ type AppProps = {
   books: Book[];
 };
 
-function CardsGrid({ books }: AppProps) {
+export default function CardsGrid({ books }: AppProps) {
   return (
     <SimpleGrid columns={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }} spacing={4}>
       {books.map((book) => {
@@ -20,5 +19,3 @@ function CardsGrid({ books }: AppProps) {
     </SimpleGrid>
   );
 }
-
-export default CardsGrid;
