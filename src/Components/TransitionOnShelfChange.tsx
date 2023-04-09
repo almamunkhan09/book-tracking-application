@@ -1,3 +1,7 @@
+/**
+ * This page is to provide user a smooth trnsition whenbooks are moving to diffent shelfs
+ */
+
 import {
   Modal,
   ModalContent,

@@ -1,3 +1,10 @@
+/**
+ * This page the the last child in the components.
+ * It shows the book picture,authors and title
+ * It also has action button to select the shelf.
+ * On each selection the book will move to respective shelf.
+ */
+
 import {
   Card,
   CardBody,
@@ -15,6 +22,9 @@ import { update } from '../assets/BooksAPI';
 import { Book } from '../assets/types';
 import { TransitionOnShelfChange } from './TransitionOnShelfChange';
 
+/**
+ * The type declaration for the props
+ */
 type AppProps = {
   book: Book;
 };
@@ -23,6 +33,11 @@ export default function BookCard({ book }: AppProps) {
   // console.log('book', book);
   const { change, setChange, allBooks } = useContext(contextApi);
   const [transitionOpen, setTransitionOpen] = useState<boolean>(false);
+
+  /**
+   * Is Exist is taken as consideration for search page
+   * If the book is alreday in any shelf the option in select will reflect
+   */
 
   const isExist: Book[] | undefined = allBooks?.filter(
     (item) => item.id === book.id,

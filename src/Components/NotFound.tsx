@@ -1,3 +1,7 @@
+/**
+ * This page will render if the routes does not exist. It also has button to route to the home page
+ */
+
 import { Button, Center, Container, Heading, VStack } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 

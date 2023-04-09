@@ -31,7 +31,7 @@ export const getAll = () =>
     .then((res) => res.json())
     .then((data) => data.books);
 
-/**s
+/**
  * Api call to update the shelf property of a book .
  * @param book the bject of the book
  * @param shelf the shelf where the book need to be moved

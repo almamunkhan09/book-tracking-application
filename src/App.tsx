@@ -1,3 +1,6 @@
+/**
+ * Import all the dependencies and loads
+ */
 import './App.css';
 import { Center, Heading } from '@chakra-ui/react';
 import { createContext, useEffect, useState } from 'react';
@@ -13,6 +16,10 @@ import ContinueReading from './Components/ContinueReading';
 import Read from './Components/Read';
 import WantToRead from './Components/WantToRead';
 
+/**
+ * Interface of context state
+ */
+
 interface ContextState {
   change: boolean;
   setChange: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,6 +28,10 @@ interface ContextState {
   read: Book[] | null;
   allBooks: Book[] | null;
 }
+
+/**
+ * Intialize the context api and export it so that it can accessible in different pages
+ */
 
 export const contextApi = createContext<ContextState>({
   change: false,
@@ -50,6 +61,10 @@ function App() {
       .catch((err) => console.log(err));
   }, [change]);
 
+  /**
+   * Render different shelf to the mainpage. Alos there is a plus icon to route to search page and search for books to add to the different page
+   */
+
   return (
     <contextApi.Provider
       value={{
@@ -68,7 +83,7 @@ function App() {
             h="150px"
             bgGradient="linear(to-r, green.200, pink.500)"
           >
-            <Heading size="3xl">MyReads</Heading>
+            <Heading size="3xl">My Reads</Heading>
           </Center>
           <div>
             <div>

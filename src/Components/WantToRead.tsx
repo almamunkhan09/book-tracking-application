@@ -1,3 +1,7 @@
+/**
+ * This page renders all the books which are currently ath shelf named 'want to reaed'
+ */
+
 import { Center, Heading } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { contextApi } from '../App';

@@ -1,3 +1,6 @@
+/**
+ * This page is grid page and calls the BookCard and arrange as per the width of the page
+ */
 import { GridItem, SimpleGrid } from '@chakra-ui/react';
 import { Book } from '../assets/types';
 import BookCard from './BookCard';
