@@ -22,7 +22,7 @@ Once the dependencies are installed, start the development server:
 $ npm run dev
 ```
 
-The app should now be running at http://localhost:3000/.
+The app should now be running at http://localhost:5173/.
 
 ## Using the App
 
